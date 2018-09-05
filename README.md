@@ -1,34 +1,96 @@
-# 金融类自定义view
+## FinancialCustomerView
+* 本项目会对金融交易软件中存在的各种View进行模仿绘制
+* 提供详细的实现思路
+* 收集整理相关算法、文档以及专业资料
+* 开源实现的金融自定View，已经核对过指标算法数据
+* 开源库已成功接入外汇、数字货币KView
+* 开源库不依赖第三方，继承系统View实现
 
-## 介绍
-> 本项目会对金融交易软件中存在的各种View进行模仿绘制，提供详细的实现思路，收集整理相关算法、文档以及专业资料。
+#### 实现思路及资料
+* https://github.com/scsfwgy/FinancialCustomerView/tree/master/%E8%B5%84%E6%96%99%E4%B8%8E%E6%96%87%E6%A1%A3
 
-## 存在的意义
-> 可能有同学会说，有很成熟的第三方图形图啊，干嘛还去自己实现？
+#### 算法以及Java版实现
+* https://github.com/scsfwgy/FinancialCustomerView/tree/master/%E8%B5%84%E6%96%99%E4%B8%8E%E6%96%87%E6%A1%A3
+* Java版实现：FinancialAlgorithm.java
 
-* 知道如何编写绘制，更方便的扩展第三库图形库。
-* 了解实现原理，如果第三方实现不了，可以从容的自己撸一个。
-* 金融交易中各种算法、各种指标很多，但是网上相关资料很少。希望可以给金融相关软件从业者提供一点点帮助~
-* 知其然，知其所以然。
+#### Usage
 
-## 效果图与demo
-* 效果图：[效果图](https://github.com/scsfwgy/FinancialCustomerView/blob/master/%E8%B5%84%E6%96%99%E4%B8%8E%E6%96%87%E6%A1%A3/%E6%95%88%E6%9E%9C%E5%9B%BE%E5%92%8C%E8%BF%9B%E5%BA%A6.md)
-* demo:[demo](https://github.com/scsfwgy/FinancialCustomerView/tree/master/apk)
+1. Add the following to your project level build.gradle:
 
-## 资料与博客
-* 资料和博客：[资料和博客](https://github.com/scsfwgy/FinancialCustomerView/tree/master/%E8%B5%84%E6%96%99%E4%B8%8E%E6%96%87%E6%A1%A3)
+        allprojects {
+        	repositories {
+        		jcenter()
+        	}
+        }
+        
+2. Add this to your app build.gradle:
 
-## 进度
-* 基金收益图开发完毕，在master分支。
-* 分时图开发完毕，在master分支。
-* 蜡烛图（带MA、BOLL指标）正在开发，在feature_candleview分支。
-* 代码重构正在处理，在feature_candleview分支。
-* 副图部分，暂停开发，当主图（分时图、蜡烛图、主图指标）开发完毕再进行副图部分，在feature_minor分支。
+        implementation 'com.wgyscsf:financialLib:0.0.2'
 
-## 贡献代码
-* 直接建立新的分支，PR即可。
+3. 在布局文件中引入需要使用的自定义View(`com.tophold.trade.view.fund.FundView`、`com.tophold.trade.view.kview.KView`)
+4. 个性化设置，like this
 
-## 知名第三方图形库
-* MPAndroidChart：[https://github.com/PhilJay/MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
-* AndroidCharts：[https://github.com/HackPlan/AndroidCharts](https://github.com/HackPlan/AndroidCharts)
-* Android-Charts：[https://github.com/limccn/Android-Charts](https://github.com/limccn/Android-Charts)
+          /**
+                 * 定制,所有的画笔以及其它属性都已经暴露出来，有了更加大的定时灵活性。更多参数可以直接查看源码...
+                 */
+                //常规set、get...
+                mFundView.getBrokenPaint().setColor(getResources().getColor(R.color.colorAccent));//设置折现颜色
+                mFundView.getInnerXPaint().setStrokeWidth(1);//设置内部x轴虚线的宽度,px
+                mFundView.getBrokenPaint().setStrokeWidth(1);
+                //链式调用
+                mFundView
+                        .setBasePaddingTop(140)
+                        .setBasePaddingLeft(50)
+                        .setBasePaddingRight(40)
+                        .setBasePaddingBottom(30)
+                        .setLoadingText("正在加载，马上就来...");
+
+
+5. 适配数据:需要将原始数据转换为本库需要的数据格式
+6. 加载数据进行显示
+
+
+#### Demo
+>  已成功模拟基金走势图、模拟K线走势、接入火币数字货币API（科学上网）、接入外汇API
+
+* https://github.com/scsfwgy/FinancialCustomerView/tree/feature_testlib
+
+#### 效果图
+
+###### 基金收益折线图`com.tophold.trade.view.fund.FundView`
+
+![](https://github.com/scsfwgy/FinancialCustomerView/blob/master/img/v1.1_img_nopress.png?raw=true)
+
+![](https://github.com/scsfwgy/FinancialCustomerView/blob/master/img/v1.1_img_press.png?raw=true)
+
+###### KView`com.tophold.trade.view.kview.KView`
+
+![2-w180](http://o71uhokgf.bkt.clouddn.com/1.png?imageMogr2/thumbnail/!25p)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/2.png?imageMogr2/thumbnail/!25p)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/3.png?imageMogr2/thumbnail/!25p)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/4.png?imageMogr2/thumbnail/!25p)
+
+![2-w180](http://o71uhokgf.bkt.clouddn.com/5.png?imageMogr2/thumbnail/!25p)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/6.png?imageMogr2/thumbnail/!25p)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/7.png?imageMogr2/thumbnail/!25p)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/8.png?imageMogr2/thumbnail/!25p)
+
+![2-w180](http://o71uhokgf.bkt.clouddn.com/15338110152858.jpg)
+![2-w180](http://o71uhokgf.bkt.clouddn.com/15341533160499.jpg)
+
+
+
+外汇类Demo gif:[http://o71uhokgf.bkt.clouddn.com/forex.gif](http://o71uhokgf.bkt.clouddn.com/forex.gif)
+
+数字货币类Demo gif:[http://o71uhokgf.bkt.clouddn.com/huobi.gif](http://o71uhokgf.bkt.clouddn.com/huobi.gif)
+
+###### PieChartView`com.tophold.trade.view.pie.PieChartView`
+
+![](http://o71uhokgf.bkt.clouddn.com/15318159501817.jpg)
+
+#### 计划
+1. onFling滑动效果
+2. view上箭头标记最大值最小值（✅）
+3. 入场动画
+4. 成交量（✅）
+

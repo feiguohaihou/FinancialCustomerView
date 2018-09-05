@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="wgyscsf.financialcustomerview"
+<manifest package="com.tophold.example"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="${app_names}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -16,9 +20,33 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".fund.FundActivity">
+        <activity android:name=".demo.beginner.ui.FundActivity">
         </activity>
-        <activity android:name=".timesharing.TimeSharingActivity">
+        <activity android:name=".demo.beginner.ui.KViewVerticalActivity">
+        </activity>
+        <activity
+            android:name=".demo.beginner.ui.KViewHorizontalActivityActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme_Fullscreen">
+        </activity>
+        <activity android:name=".demo.forex.ui.ForexListActivity">
+        </activity>
+        <activity android:name=".demo.forex.ui.ForexActivity">
+        </activity>
+        <activity android:name=".demo.btc.ui.HuobiListActivity">
+        </activity>
+        <activity android:name=".demo.btc.ui.HuobiActivity">
+        </activity>
+        <activity android:name=".FlingActivity">
+        </activity>
+        <activity android:name=".demo.pie.PieChartActivity">
+        </activity>
+        <activity android:name=".VolDemoActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 

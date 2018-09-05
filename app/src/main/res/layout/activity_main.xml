@@ -3,22 +3,67 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="verisonName:1.4,versionCode(git head):"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="goFundView"
+        android:layout_marginTop="100dp"
+        android:onClick="fundView"
         android:text="去自定义基金页面"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="goTimeShring"
-        android:text="去分时图页面"
+        android:layout_marginTop="10dp"
+        android:onClick="kViewVertical"
+        android:text="去K线图（竖屏）"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="kViewHorizontal"
+        android:text="去K线图（横屏）"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="kViewEvaluation"
+        android:text="KView数据校验(外汇demo)"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="btnDemo"
+        android:text="去看数字货币demo"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="onPieTest"
+        android:text="去看PieChart"
+        android:textAllCaps="false"
+        />
 
 </LinearLayout>  
